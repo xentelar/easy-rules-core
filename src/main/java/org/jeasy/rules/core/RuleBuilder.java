@@ -41,7 +41,8 @@ public class RuleBuilder {
     private String description = Rule.DEFAULT_DESCRIPTION;
     private int priority = Rule.DEFAULT_PRIORITY;
 
-    private Condition condition = Condition.FALSE;
+    //private Condition condition = Condition.FALSE;
+    private final List<Condition> conditions = new ArrayList<>();
     private final List<Action> actions = new ArrayList<>();
 
     /**
@@ -84,7 +85,8 @@ public class RuleBuilder {
      * @return the builder instance
      */
     public RuleBuilder when(Condition condition) {
-        this.condition = condition;
+        //this.condition = condition;
+        this.conditions.add(condition);
         return this;
     }
 
@@ -105,6 +107,6 @@ public class RuleBuilder {
      * @return a new rule instance
      */
     public Rule build() {
-        return new DefaultRule(name, description, priority, condition, actions);
+        return new DefaultRule(name, description, priority, conditions, actions);
     }
 }
