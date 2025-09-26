@@ -31,6 +31,8 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import java.util.ArrayList;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -70,7 +72,7 @@ public class RuleBuilderTest {
         assertThat(rule.getDescription()).isEqualTo("myRuleDescription");
         assertThat(rule.getPriority()).isEqualTo(3);
         assertThat(rule).isInstanceOf(DefaultRule.class);
-        assertThat(rule).extracting("condition").isSameAs(condition);
+        assertThat(rule).extracting("conditions").asList().containsExactly(condition);
         assertThat(rule).extracting("actions").asList().containsExactly(action1, action2);
     }
 }

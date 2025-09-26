@@ -155,7 +155,7 @@ public class RulesTest {
 
     @Test(expected = NullPointerException.class)
     public void whenRegisterNullRule_thenShouldThrowNullPointerException() {
-        rules.register(null);
+        rules.register((Object) null);
     }
 
     @org.jeasy.rules.annotation.Rule
